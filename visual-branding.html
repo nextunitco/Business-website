@@ -6,50 +6,95 @@
     <title>Visual Branding | Nexunit.co - Iconic Identity</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-deep: #05070A; --bg-card: #0D1117; --accent: #00D2FF; --text-primary: #FFFFFF; --text-secondary: #94A3B8; --border-color: rgba(255, 255, 255, 0.08); --glass: rgba(13, 17, 23, 0.7); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-deep); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); }
-        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { height: 40px; border-radius: 8px; }
+        :root {
+            --bg-deep: #05070A; --bg-card: #0D1117; --accent: #00D2FF;
+            --text-primary: #FFFFFF; --text-secondary: #94A3B8;
+            --border-color: rgba(255, 255, 255, 0.08); --glass: rgba(13, 17, 23, 0.7);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
+
+        /* --- SYNCED NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: var(--glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color);
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; z-index: 1001; }
+        .logo-img { height: 40px; width: auto; border-radius: 8px; }
         .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
         .logo-text span { color: var(--accent); }
-        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; }
-        .hamburger span { width: 28px; height: 2px; background: #fff; }
         .nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
-        .nav-links.active { right: 0; }
-        .nav-cta { background: var(--accent); color: #000 !important; padding: 10px 22px; border-radius: 8px; font-weight: 700; text-decoration:none; }
-        
-        .service-hero { padding: 180px 8% 80px; text-align: center; }
+        .nav-item { position: relative; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: 0.3s; padding: 10px 0; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; padding: 10px; }
+        .hamburger span { display: block; width: 28px; height: 2px; background-color: #fff; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 2px; }
+        .dropdown {
+            position: absolute; top: 100%; left: 0; width: 220px;
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 15px; opacity: 0; visibility: hidden;
+            transform: translateY(10px); transition: 0.3s;
+        }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown a:last-child { border-bottom: none; }
+        .nav-cta { background: var(--accent); color: #000 !important; padding: 10px 22px !important; border-radius: 8px; font-weight: 700 !important; margin-left: 20px; }
+
+        /* --- PAGE CONTENT --- */
+        .service-hero { padding: 180px 8% 80px; text-align: center; background: radial-gradient(circle at top, rgba(0, 210, 255, 0.05) 0%, transparent 70%); }
         .service-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; margin-bottom: 20px; }
         .service-hero span { color: var(--accent); }
-
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 60px 8% 100px; align-items: center; }
         .feature-image { border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); }
-        .feature-image img { width: 100%; height: auto; display: block; }
-        .feature-text h2 { font-size: 2.2rem; margin-bottom: 20px; color: #fff; }
-        .feature-text p { color: var(--text-secondary); margin-bottom: 25px; font-size: 1.1rem; }
+        .feature-image img { width: 100%; display: block; filter: brightness(0.9); }
 
-        footer { padding: 80px 8% 40px; background: #030508; border-top: 1px solid var(--border-color); }
-        @media (max-width: 992px) { 
-            .hamburger { display: flex; } 
-            .nav-links { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: var(--bg-card); flex-direction: column; justify-content: center; transition: 0.4s; z-index: 1000; } 
-            .nav-links.active { right: 0; } 
-            .feature-grid { grid-template-columns: 1fr; text-align: center; }
+        /* --- SYNCED FOOTER --- */
+        footer { padding: 100px 8% 40px; background: #030508; border-top: 1px solid var(--border-color); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
+        .footer-col h4 { color: #fff; font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; position: relative; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 30px; height: 2px; background: var(--accent); }
+        .footer-list { list-style: none; }
+        .footer-list li { margin-bottom: 15px; }
+        .footer-list a { color: var(--text-secondary); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-list a:hover { color: var(--accent); padding-left: 5px; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; transition: 0.3s; color: #fff; text-decoration: none; }
+        .social-icon:hover { background: var(--accent); color: #000; transform: translateY(-5px); }
+        .footer-bottom { padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #444; }
+
+        @media (max-width: 992px) {
+            .hamburger { display: flex; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: var(--bg-card); flex-direction: column; justify-content: center; gap: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: -10px 0 30px rgba(0,0,0,0.5); backdrop-filter: blur(20px); }
+            .nav-links.active { right: 0; }
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .feature-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo-container">
-            <img src="logo.jpg" alt="Nexunit" class="logo-img">
+            <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
             <div class="logo-text">NEX<span>UNIT</span></div>
         </a>
         <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li class="nav-item">
+                <a href="services.html" class="active">Services ▾</a>
+                <div class="dropdown">
+                    <a href="web-development.html">Web Development</a>
+                    <a href="ui-ux-design.html">UI/UX Design</a>
+                    <a href="visual-branding.html">Visual Branding</a>
+                </div>
+            </li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="contact.html" class="nav-cta">Hire Us</a></li>
         </ul>
     </nav>
@@ -62,23 +107,58 @@
     <section class="feature-grid">
         <div class="feature-image"><img src="graphics.jpg" alt="Visual Branding"></div>
         <div class="feature-text">
-            <h2>Command Authority</h2>
-            <p>We create more than logos; we build brand languages. From typography to color theory, we ensure your brand speaks with clarity and premium authority in a crowded market.</p>
-            <a href="contact.html" class="nav-cta">Build Your Identity</a>
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Command Authority</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 25px;">We create more than logos; we build brand languages. Ensure your brand speaks with clarity and premium authority.</p>
+            <a href="contact.html" class="nav-cta" style="display:inline-block; margin-left:0; text-decoration:none">Build Your Identity</a>
         </div>
     </section>
 
     <footer>
-        <div style="text-align:center; padding: 40px 0; color: gray;">
-            <div class="logo-text" style="color:#fff; margin-bottom:20px">NEX<span>UNIT</span></div>
-            <p><a href="mailto:nextunitco@gmail.com" style="color:var(--accent); text-decoration:none">nextunitco@gmail.com</a> | <a href="https://wa.me/2349013254507" style="color:var(--accent); text-decoration:none">+234 901 325 4507</a></p>
-            <p style="margin-top:20px; font-size:0.8rem;">&copy; 2026 Nexunit.co. All Rights Reserved.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo-container" style="margin-bottom: 25px;">
+                    <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
+                    <div class="logo-text">NEX<span>UNIT</span></div>
+                </a>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Engineering high-performance web systems and high-impact visual designs to help businesses scale in the digital era.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nexunit.co" class="social-icon">Ig</a>
+                    <a href="https://www.linkedin.com/in/nexunit-co-97ab5538b" class="social-icon">In</a>
+                    <a href="https://wa.me/2349013254507" class="social-icon">Wa</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services Hub</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-list">
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">Hire Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="footer-list">
+                    <li><a href="mailto:nextunitco@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">📧 nextunitco@gmail.com</a></li>
+                    <li><a href="https://wa.me/2349013254507" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">📱 +234 901 325 4507</a></li>
+                    <li style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">Available Mon - Sat</li>
+                </ul>
+            </div>
         </div>
+        <div class="footer-bottom"><p>&copy; 2026 Nexunit.co. All Rights Reserved.</p><p>Designed with Excellence by Nexunit</p></div>
     </footer>
+
     <script>
         const hb = document.getElementById('hamburger');
         const nl = document.getElementById('nav-links');
-        hb.onclick = () => { nl.classList.toggle('active'); };
+        hb.onclick = () => { hb.classList.toggle('active'); nl.classList.toggle('active'); };
     </script>
 </body>
 </html>
