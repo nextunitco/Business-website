@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI/UX Design | Nexunit.co - Interactive Excellence</title>
+    <title>UI/UX Design | Nexunit Strategy</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #05070A; --bg-card: #0D1117; --accent: #00D2FF;
-            --text-primary: #FFFFFF; --text-secondary: #94A3B8;
-            --border-color: rgba(255, 255, 255, 0.08); --glass: rgba(13, 17, 23, 0.7);
+            --bg-deep: #05070A;
+            --bg-card: #0D1117;
+            --accent: #00D2FF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass: rgba(13, 17, 23, 0.7);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background-color: var(--bg-deep); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
 
-        /* --- SYNCED NAVIGATION --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
@@ -29,27 +33,30 @@
         .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: 0.3s; padding: 10px 0; }
         .nav-links a:hover, .nav-links a.active { color: var(--accent); }
         .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; padding: 10px; }
-        .hamburger span { display: block; width: 28px; height: 2px; background-color: #fff; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 2px; }
-        .dropdown {
-            position: absolute; top: 100%; left: 0; width: 220px;
-            background: var(--bg-card); border: 1px solid var(--border-color);
-            border-radius: 12px; padding: 15px; opacity: 0; visibility: hidden;
-            transform: translateY(10px); transition: 0.3s;
-        }
+        .hamburger span { display: block; width: 28px; height: 2px; background-color: #fff; transition: 0.3s; border-radius: 2px; }
+        .dropdown { position: absolute; top: 100%; left: 0; width: 220px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s; }
         .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown a { display: block; padding: 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .dropdown a:last-child { border-bottom: none; }
+        .dropdown a { display: block; padding: 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-secondary); text-decoration: none; }
         .nav-cta { background: var(--accent); color: #000 !important; padding: 10px 22px !important; border-radius: 8px; font-weight: 700 !important; margin-left: 20px; }
 
-        /* --- PAGE CONTENT --- */
-        .service-hero { padding: 180px 8% 80px; text-align: center; background: radial-gradient(circle at top, rgba(0, 210, 255, 0.05) 0%, transparent 70%); }
-        .service-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; margin-bottom: 20px; }
-        .service-hero span { color: var(--accent); }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 60px 8% 100px; align-items: center; }
-        .feature-image { border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); }
-        .feature-image img { width: 100%; display: block; filter: brightness(0.9); }
+        /* --- HERO WITH BACKGROUND --- */
+        .hero { 
+            padding: 220px 8% 120px; 
+            text-align: center; 
+            background: linear-gradient(rgba(5, 7, 10, 0.8), rgba(5, 7, 10, 0.8)), url('UIUX.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
+        .hero span { color: var(--accent); }
+        .hero p { max-width: 700px; margin: 0 auto; color: var(--text-secondary); }
 
-        /* --- SYNCED FOOTER --- */
+        .process-container { padding: 80px 8% 120px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .process-step { position: relative; padding: 30px; background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); }
+        .process-step h2 { font-size: 3rem; opacity: 0.1; position: absolute; top: 10px; right: 20px; margin: 0; }
+        .process-step h4 { color: var(--accent); font-size: 1.2rem; margin-bottom: 15px; }
+
         footer { padding: 100px 8% 40px; background: #030508; border-top: 1px solid var(--border-color); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
         .footer-col h4 { color: #fff; font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; position: relative; }
@@ -57,22 +64,9 @@
         .footer-list { list-style: none; }
         .footer-list li { margin-bottom: 15px; }
         .footer-list a { color: var(--text-secondary); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
-        .footer-list a:hover { color: var(--accent); padding-left: 5px; }
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .social-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; transition: 0.3s; color: #fff; text-decoration: none; }
-        .social-icon:hover { background: var(--accent); color: #000; transform: translateY(-5px); }
         .footer-bottom { padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #444; }
 
-        @media (max-width: 992px) {
-            .hamburger { display: flex; }
-            .nav-links { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: var(--bg-card); flex-direction: column; justify-content: center; gap: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: -10px 0 30px rgba(0,0,0,0.5); backdrop-filter: blur(20px); }
-            .nav-links.active { right: 0; }
-            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-            .feature-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
+        @media (max-width: 992px) { .nav-links { display: none; } .hamburger { display: flex; } .footer-grid { grid-template-columns: 1fr 1fr; } .hero { padding: 160px 8% 80px; } }
     </style>
 </head>
 <body>
@@ -81,8 +75,8 @@
             <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
             <div class="logo-text">NEX<span>UNIT</span></div>
         </a>
-        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-        <ul class="nav-links" id="nav-links">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li class="nav-item">
                 <a href="services.html" class="active">Services ▾</a>
@@ -95,37 +89,28 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html" class="nav-cta">Hire Us</a></li>
+            <li><a href="hire-us.html" class="nav-cta">Hire Us</a></li>
         </ul>
     </nav>
 
-    <header class="service-hero">
-        <h1>Human-Centric <span>UI/UX</span></h1>
-        <p>Interfaces designed for intuition, engagement, and conversion.</p>
+    <header class="hero">
+        <h1>Experience <span>Design</span></h1>
+        <p>Crafting intuitive digital journeys that combine behavioral science with high-end aesthetic precision.</p>
     </header>
 
-    <section class="feature-grid">
-        <div class="feature-text">
-            <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Experience-First</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 25px;">We bridge the gap between complex functionality and human behavior. Every pixel is placed with intent.</p>
-            <a href="contact.html" class="nav-cta" style="display:inline-block; margin-left:0; text-decoration:none">Start Your Project</a>
-        </div>
-        <div class="feature-image"><img src="UIUX.jpg" alt="UIUX Design"></div>
-    </section>
+    
+
+    <div class="process-container">
+        <div class="process-step"><h2>01</h2><h4>Discovery</h4><p>Analyzing user goals and business objectives to define the core experience flow.</p></div>
+        <div class="process-step"><h2>02</h2><h4>Prototyping</h4><p>Building high-fidelity interactive models to test usability before engineering begins.</p></div>
+        <div class="process-step"><h2>03</h2><h4>Interface</h4><p>Applying the visual identity layer with pixel-perfect attention to detail and hierarchy.</p></div>
+    </div>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <a href="index.html" class="logo-container" style="margin-bottom: 25px;">
-                    <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
-                    <div class="logo-text">NEX<span>UNIT</span></div>
-                </a>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Engineering high-performance web systems and high-impact visual designs to help businesses scale in the digital era.</p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/nexunit.co" class="social-icon">Ig</a>
-                    <a href="https://www.linkedin.com/in/nexunit-co-97ab5538b" class="social-icon">In</a>
-                    <a href="https://wa.me/2349013254507" class="social-icon">Wa</a>
-                </div>
+                <div class="logo-text" style="margin-bottom: 20px;">NEX<span>UNIT</span></div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Engineering high-performance web systems globally.</p>
             </div>
             <div class="footer-col">
                 <h4>Navigation</h4>
@@ -133,32 +118,27 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services Hub</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="about.html">About Team</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Support</h4>
                 <ul class="footer-list">
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="contact.html">Hire Us</a></li>
+                    <li><a href="hire-us.html">Hire the Unit</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact Info</h4>
                 <ul class="footer-list">
-                    <li><a href="mailto:nextunitco@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">📧 nextunitco@gmail.com</a></li>
-                    <li><a href="https://wa.me/2349013254507" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">📱 +234 901 325 4507</a></li>
-                    <li style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">Available Mon - Sat</li>
+                    <li><a href="mailto:nextunitco@gmail.com">📧 nextunitco@gmail.com</a></li>
+                    <li><a href="https://wa.me/2349013254507">📱 +234 901 325 4507</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2026 Nexunit.co. All Rights Reserved.</p><p>Designed with Excellence by Nexunit</p></div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nexunit.co. All Rights Reserved.</p>
+            <p>Designed with Excellence by Nexunit</p>
+        </div>
     </footer>
-
-    <script>
-        const hb = document.getElementById('hamburger');
-        const nl = document.getElementById('nav-links');
-        hb.onclick = () => { hb.classList.toggle('active'); nl.classList.toggle('active'); };
-    </script>
 </body>
 </html>

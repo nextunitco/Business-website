@@ -37,7 +37,6 @@
         .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: 0.3s; padding: 10px 0; }
         .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-        /* Hamburger Menu Icon */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -64,6 +63,7 @@
         }
         .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown a { display: block; padding: 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown a:hover { color: var(--accent); }
         .dropdown a:last-child { border-bottom: none; }
 
         .nav-cta {
@@ -150,7 +150,7 @@
         }
         .service-card:hover .explore-btn { color: var(--accent); gap: 15px; }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (Synced) --- */
         footer { padding: 100px 8% 40px; background: #030508; border-top: 1px solid var(--border-color); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
         .footer-col h4 { color: #fff; font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; position: relative; }
@@ -171,33 +171,20 @@
             font-size: 0.85rem; color: #444; 
         }
 
-        /* --- MOBILE RESPONSIVENESS & HAMBURGER LOGIC --- */
         @media (max-width: 992px) {
             .hamburger { display: flex; }
-            
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 75%;
-                height: 100vh;
-                background: var(--bg-card);
-                flex-direction: column;
-                justify-content: center;
-                gap: 20px;
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-                backdrop-filter: blur(20px);
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+                background: var(--bg-card); flex-direction: column; justify-content: center;
+                gap: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5); backdrop-filter: blur(20px);
             }
-
             .nav-links.active { right: 0; }
-
             .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
+            .dropdown { position: static; opacity: 1; visibility: visible; width: 100%; border: none; transform: none; background: transparent; padding-left: 20px; }
             .nav-cta { margin: 20px 0 0 0 !important; }
-
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .hub-grid { grid-template-columns: 1fr; }
         }
@@ -206,7 +193,6 @@
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
             .services-hero { padding: 140px 5% 60px; }
-            .hub-section { padding: 20px 5% 80px; }
         }
     </style>
 </head>
@@ -237,7 +223,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html" class="nav-cta">Hire Us</a></li>
+            <li><a href="hire-us.html" class="nav-cta">Hire Us</a></li>
         </ul>
     </nav>
 
@@ -285,10 +271,7 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <a href="index.html" class="logo-container" style="margin-bottom: 25px;">
-                    <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
-                    <div class="logo-text">NEX<span>UNIT</span></div>
-                </a>
+                <div class="logo-text" style="margin-bottom: 25px;">NEX<span>UNIT</span></div>
                 <p style="color: var(--text-secondary); font-size: 0.95rem;">
                     Engineering high-performance web systems and high-impact visual designs to help businesses scale in the digital era.
                 </p>
@@ -313,9 +296,7 @@
                 <h4>Support</h4>
                 <ul class="footer-list">
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="contact.html">Hire Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="hire-us.html">Hire Us</a></li>
                 </ul>
             </div>
 

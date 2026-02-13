@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire the Unit | Nexunit.co - Project Inquiry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #05070A;
+            --bg-card: #0D1117;
+            --accent: #00D2FF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass: rgba(13, 17, 23, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg-deep); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
+
+        /* --- NAVIGATION (Global Sync) --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: var(--glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color);
+        }
+        
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 40px; width: auto; border-radius: 8px; }
+        .logo-text { font-size: 1.4rem; font-weight: 800; color: #fff; }
+        .logo-text span { color: var(--accent); }
+
+        .nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: 0.3s; padding: 10px 0; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-cta {
+            background: var(--accent); color: #000 !important;
+            padding: 10px 22px !important; border-radius: 8px;
+            font-weight: 700 !important; margin-left: 20px;
+        }
+
+        /* --- HIRE SECTION --- */
+        .hire-page { padding: 180px 8% 100px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+
+        .hire-info-side h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+        .hire-info-side h1 span { color: var(--accent); }
+        .hire-info-side p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px; }
+
+        .feature-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px; }
+        .feature-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin-top: 10px; }
+        .feature-text b { color: #fff; display: block; margin-bottom: 5px; }
+        .feature-text p { font-size: 0.95rem; margin-bottom: 0; }
+
+        /* --- FORM STYLING --- */
+        .hire-form-side { background: var(--bg-card); border: 1px solid var(--border-color); padding: 50px; border-radius: 30px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .form-control {
+            width: 100%; background: #05070A; border: 1px solid var(--border-color);
+            padding: 15px; border-radius: 12px; color: #fff; font-family: inherit;
+            transition: 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 210, 255, 0.1); }
+        
+        textarea.form-control { height: 180px; resize: none; }
+
+        .submit-btn {
+            width: 100%; background: var(--accent); color: #000; border: none;
+            padding: 18px; border-radius: 12px; font-weight: 800; font-size: 1rem;
+            cursor: pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase;
+        }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2); }
+
+        /* --- FOOTER (Global Sync) --- */
+        footer { padding: 100px 8% 40px; background: #030508; border-top: 1px solid var(--border-color); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
+        .footer-col h4 { color: #fff; font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; position: relative; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 30px; height: 2px; background: var(--accent); }
+        .footer-list { list-style: none; }
+        .footer-list li { margin-bottom: 15px; }
+        .footer-list a { color: var(--text-secondary); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-list a:hover { color: var(--accent); padding-left: 5px; }
+
+        .footer-bottom { padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #444; }
+
+        @media (max-width: 992px) {
+            .hire-page { grid-template-columns: 1fr; padding-top: 140px; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
+            <div class="logo-text">NEX<span>UNIT</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="hire-us.html" class="nav-cta">Hire Us</a></li>
+        </ul>
+    </nav>
+
+    <main class="hire-page">
+        <div class="hire-info-side">
+            <h1>Scale your <span>Vision.</span></h1>
+            <p>Tell us about your project. We specialize in engineering high-performance digital solutions for businesses that demand excellence.</p>
+
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text">
+                    <b>Specialized Engineering</b>
+                    <p>Every line of code and pixel is optimized for performance and scale.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text">
+                    <b>Rapid Transmission</b>
+                    <p>Our unit responds to all project inquiries within 24 hours.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-dot"></div>
+                <div class="feature-text">
+                    <b>Full-Cycle Support</b>
+                    <p>From architectural brief to final deployment and maintenance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hire-form-side">
+            <form action="#">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company / Organization</label>
+                        <input type="text" class="form-control" placeholder="Company Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Work Email</label>
+                    <input type="email" class="form-control" placeholder="john@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Details</label>
+                    <textarea class="form-control" placeholder="Briefly describe your goals, required features, and timeline..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Initiate Project →</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-text" style="margin-bottom: 20px;">NEX<span>UNIT</span></div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Engineering digital excellence for high-scale businesses.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services Hub</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-list">
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="hire-us.html">Hire Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="footer-list">
+                    <li style="color: var(--text-secondary); font-size: 0.9rem;"><a href="mailto:nextunitco@gmail.com" style="color: inherit; text-decoration: none;">📧 nextunitco@gmail.com</a></li>
+                    <li style="color: var(--text-secondary); font-size: 0.9rem;"><a href="https://wa.me/2349013254507" target="_blank" style="color: inherit; text-decoration: none;">📱 +234 901 325 4507</a></li>
+                    <li style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">Available Mon - Sat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nexunit.co. All Rights Reserved.</p>
+            <p>Designed with Excellence by Nexunit</p>
+        </div>
+    </footer>
+
+</body>
+</html>
