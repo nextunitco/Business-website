@@ -72,7 +72,7 @@
         }
 
         /* --- COMPACT MOBILE MENU --- */
-        @media (max-width: 992px) {}
+        @media (max-width: 992px) {
             .nav-links {
                 position: fixed; top: 80px; right: -100%; 
                 width: 220px; background: rgba(13, 17, 23, 0.98);
@@ -97,6 +97,7 @@
             }
             .nav-item.open .dropdown { display: block; }
             .nav-item-split { justify-content: space-between; width: 100%; }
+        }
 
         /* --- HERO SECTION --- */
         .services-hero { 
@@ -175,6 +176,31 @@
             transition: 0.3s;
         }
         .service-card:hover .explore-btn { color: var(--accent); gap: 15px; }
+
+        @media (max-width: 768px) {
+            .hub-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+                gap: 20px; 
+            }
+            .card-image { height: 200px; }
+            .card-content { padding: 25px; }
+            .card-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
+            .card-content p { font-size: 0.85rem; margin-bottom: 15px; }
+        }
+
+        @media (max-width: 480px) {
+            .hub-section { padding: 30px 5% 80px; }
+            .hub-grid { 
+                grid-template-columns: 1fr;
+                gap: 15px; 
+            }
+            .card-image { height: 180px; }
+            .card-content { padding: 20px; }
+            .card-content span { font-size: 0.65rem; margin-bottom: 8px; }
+            .card-content h3 { font-size: 1.2rem; margin-bottom: 10px; }
+            .card-content p { font-size: 0.8rem; margin-bottom: 12px; }
+            .explore-btn { font-size: 0.8rem; }
+        }
 
         /* --- FOOTER --- */
         footer { padding: 100px 8% 40px; background: #030508; border-top: 1px solid var(--border-color); }
