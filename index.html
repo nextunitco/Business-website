@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexunit - Digital Engineering Hub. Building innovative digital solutions with expert web development, UI/UX design, and visual branding services.">
     <title>Nexunit | Engineering Digital Excellence</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,6 +53,11 @@
         /* Hamburger Menu Icon */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 2001; }
         .hamburger span { width: 28px; height: 2px; background: #fff; transition: 0.4s; }
+        
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(19px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-19px); }
 
         /* Dropdown Menu (Desktop) */
         .dropdown {
@@ -112,13 +118,28 @@
         .hero p { max-width: 650px; margin: 0 auto 40px; color: var(--text-secondary); font-size: 1.1rem; padding: 0 5%; }
         
         .cta-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-block; }
+        .btn { padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; cursor: pointer; }
         .btn-primary { background: var(--accent); color: #000; }
         .btn-secondary { border: 1px solid var(--border-color); color: #fff; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2); }
+        .btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3); }
 
         /* --- SECTIONS --- */
-        section { padding: 80px 8%; }
+        section { padding: 80px 8%; animation: fadeInUp 0.8s ease-out forwards; animation-fill-mode: both; }
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .section-tag { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
         .section-title { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 40px; font-weight: 800; }
 
@@ -228,37 +249,45 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="logo-text" style="margin-bottom: 20px;">NEX<span>UNIT</span></div>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">Engineering high-performance web systems and high-impact visual designs globally.</p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/nexunit.co" class="social-icon">Ig</a>
-                    <a href="https://www.linkedin.com/in/nexunit-co-97ab5538b" class="social-icon">In</a>
-                    <a href="https://wa.me/2349013254507" class="social-icon">Wa</a>
-                </div>
+                <a href="index.html" class="logo-container" style="margin-bottom: 25px;">
+                    <img src="logo.jpg" alt="Nexunit Logo" class="logo-img">
+                    <div class="logo-text">NEX<span>UNIT</span></div>
+                </a>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Engineering high-performance web systems and high-impact visual designs globally.</p>
             </div>
+
             <div class="footer-col">
                 <h4>Navigation</h4>
                 <ul class="footer-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services Hub</a></li>
                     <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About Team</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Support</h4>
                 <ul class="footer-list">
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="hire-us.html">Hire the Unit</a></li>
+                    <li><a href="contact.html">Hire Us</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Contact Info</h4>
                 <ul class="footer-list">
-                    <li><a href="mailto:nextunitco@gmail.com">📧 nextunitco@gmail.com</a></li>
-                    <li><a href="https://wa.me/2349013254507">📱 +234 901 325 4507</a></li>
+                    <li style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <a href="mailto:nextunitco@gmail.com" style="color: inherit; text-decoration: none;">📧 nextunitco@gmail.com</a>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <a href="https://wa.me/2349013254507" target="_blank" style="color: inherit; text-decoration: none;">📱 +234 901 325 4507</a>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">Available Mon - Sat</li>
                 </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
             <p>&copy; 2026 Nexunit.co. All Rights Reserved.</p>
             <p>Designed with Excellence by Nexunit</p>

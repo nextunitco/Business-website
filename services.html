@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover our comprehensive digital services: web development, UI/UX design, and visual branding tailored to your business needs.">
     <title>Our Services | Nexunit.co - Digital Engineering Hub</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,6 +53,11 @@
         /* Hamburger Menu Icon */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 2001; }
         .hamburger span { width: 28px; height: 2px; background: #fff; transition: 0.4s; }
+        
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(19px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-19px); }
 
         /* Dropdown Menu (Desktop) */
         .dropdown {
@@ -173,9 +179,25 @@
             color: #fff;
             font-weight: 700;
             font-size: 0.9rem;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
         }
-        .service-card:hover .explore-btn { color: var(--accent); gap: 15px; }
+        .service-card:hover .explore-btn { color: var(--accent); gap: 15px; transform: translateX(5px); }
+
+        /* Section animations */
+        section { animation: fadeInUp 0.8s ease-out forwards; animation-fill-mode: both; }
+        section:nth-child(n+2) { animation-delay: 0.1s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         @media (max-width: 768px) {
             .hub-grid { 
