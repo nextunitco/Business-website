@@ -7,6 +7,56 @@
     <title>Hire the Unit | Nexunit.co - Project Inquiry</title>
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-deep);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.6s ease-out;
+        }
+        .page-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 210, 255, 0.2);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Typewriter Effect */
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+            animation-fill-mode: forwards;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-right-color: transparent; }
+        }
+    </style>
 
     <style>
         :root {
@@ -78,7 +128,7 @@
         }
 
         /* --- HIRE SECTION --- */
-        .hire-page { padding: 180px 8% 100px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+        .hire-page { padding: 180px 8% 100px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; animation: fadeInUp 0.8s ease-out forwards; }
 
         .hire-info-side h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
         .hire-info-side h1 span { color: var(--accent); }
@@ -112,8 +162,7 @@
         .submit-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3); }
 
         /* Section animations */
-        section, .hire-page { animation: fadeInUp 0.8s ease-out forwards; animation-fill-mode: both; }
-        section:nth-child(n+2), .hire-page:nth-child(n+2) { animation-delay: 0.1s; }
+        section { animation: fadeInUp 0.8s ease-out forwards; }
         
         @keyframes fadeInUp {
             from {
@@ -136,7 +185,7 @@
         .footer-list a { color: var(--text-secondary); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
         .footer-list a:hover { color: var(--accent); padding-left: 5px; }
 
-        .footer-bottom { padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #444; }
+        .footer-bottom { padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-secondary); }
 
         /* --- COMPACT MOBILE MENU --- */
         @media (max-width: 992px) {
@@ -172,6 +221,10 @@
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="spinner"></div>
+    </div>
 
     <nav>
         <a href="index.html" class="logo-container">
@@ -234,7 +287,7 @@
         </div>
 
         <div class="hire-form-side">
-            <form action="#">
+            <form action="mailto:nextunitco@gmail.com" method="POST" enctype="text/plain">
                 <div class="form-row">
                     <div class="form-group">
                         <label>Your Name</label>
@@ -285,7 +338,7 @@
                 <h4>Support</h4>
                 <ul class="footer-list">
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="contact.html">Hire Us</a></li>
+                    <li><a href="hire-us.html">Hire Us</a></li>
                 </ul>
             </div>
 
@@ -308,17 +361,23 @@
             <p>Designed with Excellence by Nexunit</p>
         </div>
     </footer>
-                    <li style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">Available Mon - Sat</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Nexunit.co. All Rights Reserved.</p>
-            <p>Designed with Excellence by Nexunit</p>
-        </div>
-    </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out-quad',
+            once: false,
+            offset: 100
+        });
+
+        // Page Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            if(loader) loader.classList.add('hidden');
+        });
+
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         const arrowToggle = document.getElementById('arrow-toggle');
@@ -357,6 +416,5 @@
             spans[2].style.transform = 'none';
         });
     </script>
-
 </body>
 </html>
